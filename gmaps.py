@@ -1,7 +1,11 @@
 import googlemaps
 from datetime import datetime
 
-gmaps = googlemaps.Client(key='Add Your Key here')
+api_key_file = open("./api_keys/gmaps", "r")
+api_key = api_key_file.read().strip()
+api_key_file.close()
+
+gmaps = googlemaps.Client(key=api_key)
 
 # Geocoding an address
 geocode_result = gmaps.geocode('1600 Amphitheatre Parkway, Mountain View, CA')
@@ -15,3 +19,12 @@ directions_result = gmaps.directions("Sydney Town Hall",
                                      "Parramatta, NSW",
                                      mode="transit",
                                      departure_time=now)
+
+print(directions_result)
+
+
+
+def getDirections(start: tuple, end: tuple):
+    directions = {}
+    
+    directions["driving"] = gmaps.directions(start, end, "driving")
