@@ -1,4 +1,4 @@
-class BusStop:
+class Node:
     def __init__(self, name, latitude, longitude):
         self.stop_name = name
         self.coords = (latitude, longitude)
@@ -11,10 +11,3 @@ class BusStop:
         longitudeDifference = abs(self.coords[1] - otherNode.coords[1])
 
         return (latitudeDifference, longitudeDifference)
-
-stops = []
-
-stops.append(BusStop("MSC", 1, 2))
-stops.append(BusStop("JIT", 2, 3))
-
-

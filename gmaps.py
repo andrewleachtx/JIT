@@ -22,8 +22,6 @@ directions_result = gmaps.directions("Sydney Town Hall",
 
 print(directions_result)
 
-
-
 def getDirections(start: tuple, end: tuple):
     directions = {}
     
