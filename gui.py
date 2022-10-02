@@ -45,6 +45,7 @@ def bruh(): #this opens a file dialogue
     # location = location[location]
     # location = (location.lat, location.lng)
     location = (30,-100)
+    location = (30.6122578,-96.3437385)
     print(location)
 
 root = Tk()
