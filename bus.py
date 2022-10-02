@@ -2,6 +2,7 @@ import requests
 from busnodes import Node
 from datetime import datetime
 import googlemaps
+from random import randint
 
 
 def work(end_lat, end_long):
@@ -48,9 +49,10 @@ def work(end_lat, end_long):
 
             print('\n')
 
-    msc_lat, msc_long = 30.6129, -96.3402
-
-    start = Node("Start", msc_lat, msc_long)
+    random_deviation = randint(-1, 1)
+    # Starting Point will vary for simulating testing, user input not complete
+    start_lat, start_long = 29.119 + random_deviation, -98.3402 + random_deviation
+    start = Node("Start", start_lat, start_long)
     end   = Node("End", end_lat, end_long)
 
     def closestToNode(route, startNode):
@@ -61,7 +63,7 @@ def work(end_lat, end_long):
 
         for i in range(len(distance["rows"][0]["elements"])):
             time_string  = distance["rows"][0]["elements"][i]["duration"]["text"]
-            times.append(int(time_string.split(' ')[0]))
+            times.append(float(time_string.split(' ')[0]) * 1.8)
 
         minIndex = times.index(min(times))
 

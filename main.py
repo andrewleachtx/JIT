@@ -6,15 +6,13 @@ import pytz
 from tkinter import *
 import tkinter as ttk
 from weather import rain
-from buildings import sampleBuildings
+from buildings import sampleBuildings, names
 from time import localtime
 from tkinter import filedialog as fd
 from coolcal import myCal, icsConvert
 import bus
 from busnodes import Node
 
-
-'''google maps stuff'''
 import googlemaps
 from datetime import datetime
 
@@ -23,7 +21,6 @@ api_key = api_key_file.read().strip()
 api_key_file.close()
 
 gmaps = googlemaps.Client(key=api_key)
-
     
 def openFileDialog() -> str:
     return fd.askopenfilename()
@@ -46,39 +43,30 @@ root.geometry( "500x500" )
 weather = Label(text=rain())
 weather.pack()
 
-w = Text(root, height=1, width = 500)
-w.pack()
-loadLocButton = ttk.Button(root, text="Load Location", command = bruh)
-loadLocButton.pack()
-
-# isRaining = rain() #If true raining if false not raining
-#time = localtime().tm_hour * 60 + localtime().tm_min
-
+# w = Text(root, height=1, width = 500)
+# w.pack()
+# loadLocButton = ttk.Button(root, text="Load Location", command = bruh)
+# loadLocButton.pack()
 
 OPTIONS = sampleBuildings
- #etc
+OPTIONS2 = names
 
 root = Tk()
 
 variable = StringVar(root)
 variable.set("Desired Destination") # default value
 
-w = OptionMenu(root, variable, *OPTIONS)
+w = OptionMenu(root, variable, *OPTIONS2)
 w.pack()
 
-# def ok():
-#     print ("value is:" + variable.get())
-
 def show():
-    if str(variable.get()) != "Desired Location":
+    if variable.get()[0] != "Desired Location":
+        if variable.get() in names:
+            index = names.index(variable.get())
 
-        for elem in OPTIONS:
+    end_lat, end_long = OPTIONS[index][1], OPTIONS[index][2]
 
-            if variable.get() in elem.nameAbb:
-                destination = elem
-        end_node = (elem.lat,elem.long)
-
-    weather = Label(text=bus.work(end_node[0],end_node[1]))
+    weather = Label(text=bus.work(end_lat, end_long))
     weather.pack()
 
 button = Button(root, text="", command = show)
