@@ -1,6 +1,16 @@
 def rain():
     import requests
-    from location import location_function
+
+    def location_function():
+        response = requests.get('https://ipinfo.io/')
+
+        loc = response.json()['loc'].split(',')
+
+        latitude = loc[0]
+        longitude = loc[1]
+
+        return (latitude,longitude)   
+
     #Currently set to location on campus. Could read in location date potentially from google maps
     latitude = location_function()[0]
     longitude = location_function()[1]
@@ -30,4 +40,8 @@ def rain():
     if (("rain" in twelve) or ("rain" in twentyfour)):
         rain = True
     
-    return rain
+    if rain == True:
+        return "It will rain today"
+
+    else: 
+        return "It will not rain today"

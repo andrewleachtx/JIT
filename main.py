@@ -13,6 +13,7 @@ from coolcal import myCal, icsConvert
 import bus
 from busnodes import Node
 
+
 '''google maps stuff'''
 import googlemaps
 from datetime import datetime
@@ -40,14 +41,10 @@ def bruh(): #this opens a file dialogue
     #     print(location[i])
     #     print(i)
 
-    # print(location[0].keys())
-    location = location[location]
-    location = (location.lat, location.lng)
-    # location = (30,-100)
-    # print(location)
-
 root = Tk()
 root.geometry( "500x500" )
+weather = Label(text=rain())
+weather.pack()
 
 w = Text(root, height=1, width = 500)
 w.pack()
