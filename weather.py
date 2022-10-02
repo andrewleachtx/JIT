@@ -11,11 +11,11 @@ def rain():
 
         return (latitude,longitude)   
 
-    #Currently set to location on campus. Could read in location date potentially from google maps
+    # Currently set to location on campus. Could read in location date potentially from google maps
     latitude = location_function()[0]
     longitude = location_function()[1]
 
-    #Translate location to necessary grid
+    # Translate location to necessary grid
     location = requests.get(f"https://api.weather.gov/points/{latitude},{longitude}")
 
 
@@ -26,12 +26,12 @@ def rain():
 
     response = requests.get(f"https://api.weather.gov/gridpoints/{gridId}/{gridX},{gridY}/forecast")
 
-    #First Twelve Hours
+    # First Twelve Hours
     twelve = response.json()['properties']['periods'][0]["detailedForecast"]
     low = response.json()['properties']['periods'][0]["temperature"]
 
 
-    #Remaining Twelve Hours of Day
+    # Remaining Twelve Hours of Day
     twentyfour = response.json()['properties']['periods'][1]["detailedForecast"]
     high = response.json()['properties']['periods'][1]["temperature"]
 

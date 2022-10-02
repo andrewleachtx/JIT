@@ -17,17 +17,12 @@ def openFileDialog() -> str:
     return fd.askopenfilename()
 
 
-def bruh():  # this opens a file dialogue
-
+def getCurrentLocation(): # Get current location, is not called currently
     # for sched in cal:
-    addy = "Memorial Student Center Texas A&M"
-    # addy = w.get("1.0","end-1c")
-    location = gmaps.geocode(address=addy)
+    #     address = "Memorial Student Center Texas A&M"
+    #     location = gmaps.geocode(address=addy)
 
-    # for i in range(len(location)):
-    #     print(location[i])
-    #     print(i)
-
+    pass
 
 root    = Tk()
 root.geometry("500x500")
@@ -38,6 +33,7 @@ OPTIONS  = sampleBuildings
 OPTIONS2 = names
 
 root = Tk()
+root.geometry("500x500")
 
 variable = StringVar(root)
 variable.set("Desired Destination") # Default Value
