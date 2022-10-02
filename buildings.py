@@ -5,7 +5,7 @@ class Building:
         self.long = long
     
     def __str__(self):
-        return f"{self.nameAbb}\n{self.lat}\n{self.long}"
+        return f"{self.nameAbb}"
 
 sampleBuildings = [
                     Building("ILCB", 30.611989292762015, -96.34449602492593),
