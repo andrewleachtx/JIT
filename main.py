@@ -26,7 +26,7 @@ def getCurrentLocation(): # Get current location, is not called currently
 
 root    = Tk()
 root.geometry("1200x500")
-weather = Label(text=rain(), font="Helvetica, 20")
+weather = Label(text=rain() + "\n", font="Helvetica, 20")
 weather.pack()
 
 OPTIONS  = sampleBuildings
