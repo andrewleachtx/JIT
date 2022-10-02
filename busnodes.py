@@ -4,7 +4,7 @@ class Node:
         self.coords = (latitude, longitude)
 
     def printNode(self):
-        print(self.stop_name, self.coords)
+        return (f"{self.stop_name}, {self.coords}")
 
     def distance(self, otherNode):
         latitudeDifference = abs(self.coords[0] - otherNode.coords[0])

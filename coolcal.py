@@ -1,7 +1,6 @@
 from icalendar import Calendar, Event, vCalAddress, vText
 from datetime import datetime, time, timezone, timedelta
 
-
 def utc_to_cst(utc_dt):
     cstTimeDelta = timedelta(hours=-5)
     cstTZObject = timezone(cstTimeDelta, name="CST")

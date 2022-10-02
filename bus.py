@@ -3,7 +3,8 @@ from busnodes import Node
 from datetime import datetime
 import googlemaps
 
-def work(start_lat, start_long, end_lat, end_long):
+
+def work(end_lat, end_long):
     api_key_file = open("./api_keys/gmaps", "r")
     api_key = api_key_file.read().strip()
     api_key_file.close()
@@ -47,7 +48,9 @@ def work(start_lat, start_long, end_lat, end_long):
 
             print('\n')
 
-    start = Node("Start", start_lat, start_long)
+    msc_lat, msc_long = 30.6129, -96.3402
+
+    start = Node("Start", msc_lat, msc_long)
     end   = Node("End", end_lat, end_long)
 
     def closestToNode(route, startNode):
@@ -79,5 +82,5 @@ def work(start_lat, start_long, end_lat, end_long):
 
     fastest_route = route_times[fastest_index][0]
 
-    print(f"The fastest route is {fastest_route}. The closest bus stop (walking time) to you right now is {potential_routes[fastest_route][0][0].printNode()}."
+    return (f"The fastest route is {fastest_route}. The closest bus stop (walking time) to you right now is {potential_routes[fastest_route][0][0].printNode()}."
           f" You should get off on {potential_routes[fastest_route][1][0].printNode()}, it is the closest stop (walking time) to your destination")

@@ -10,7 +10,8 @@ from buildings import sampleBuildings
 from time import localtime
 from tkinter import filedialog as fd
 from coolcal import myCal, icsConvert
-# import bus
+import bus
+from busnodes import Node
 
 '''google maps stuff'''
 import googlemaps
@@ -29,23 +30,21 @@ def openFileDialog() -> str:
 
 
 def bruh(): #this opens a file dialogue
-    # filename = openFileDialog()
-    # cal = icsConvert(filename)
-    
+
     # for sched in cal:
     addy = "Memorial Student Center Texas A&M"
     # addy = w.get("1.0","end-1c")
     location = gmaps.geocode(address=addy)
-    
+
     # for i in range(len(location)):
     #     print(location[i])
     #     print(i)
-    
-    print(location[0].keys())
-    # location = location[location]
-    # location = (location.lat, location.lng)
-    location = (30,-100)
-    print(location)
+
+    # print(location[0].keys())
+    location = location[location]
+    location = (location.lat, location.lng)
+    # location = (30,-100)
+    # print(location)
 
 root = Tk()
 root.geometry( "500x500" )
@@ -55,7 +54,7 @@ w.pack()
 loadLocButton = ttk.Button(root, text="Load Location", command = bruh)
 loadLocButton.pack()
 
-isRaining = rain() #If true raining if false not raining
+# isRaining = rain() #If true raining if false not raining
 #time = localtime().tm_hour * 60 + localtime().tm_min
 
 
@@ -81,25 +80,12 @@ def show():
             if variable.get() in elem.nameAbb:
                 destination = elem
         end_node = (elem.lat,elem.long)
-        bus.work(location[0],location[1], end_node[0],end_node[1])
+
+    weather = Label(text=bus.work(end_node[0],end_node[1]))
+    weather.pack()
 
 button = Button(root, text="", command = show)
 button.pack()
-
-# print(variable.get())
-
-
-
-
-#end_node = destination
-            
-
-
-
-
-
-
-
 
 root.mainloop()
 
