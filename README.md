@@ -13,7 +13,7 @@ J.I.T. takes input from a user, such as a wake-up alarm and calendar, and will p
 - Take user input of a current location, and a desired location. From this, find of all routes the one with the least walking time required in order to get to a bus stop and get off the next bus stop closest to the destination.
 - Display weather information and ask user decisions about their path.
 - Intake calendar data as .ics and be able to calculate optimal routes from starting points.
-- Use given information from user to output.
+- Use given information from user in making algorithm decisions.
 
 ## Dependencies
 - [Python] with VSCode environment, chosen for straightforward implementation and reliance on libraries.
