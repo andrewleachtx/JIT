@@ -7,5 +7,5 @@ class node:
         self.coords = coords
         self.name = name
     
-    def addNext(self, nextNode):
-        self.nextNodes.append(nextNode)
+    def addNext(self, nextNode, line: int):
+        self.nextNodes.append((nextNode, line))
