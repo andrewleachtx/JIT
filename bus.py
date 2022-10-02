@@ -8,8 +8,6 @@ for item in response.json():
 
 bus_stops = {}
 
-# Pull estimate time
-
 for routeNum in route_numbers:
     response = requests.get(
         f"https://transport.tamu.edu/BusRoutesFeed/api/route/{routeNum}/pattern/2022-10-01")  # The date can be outdated, this can be changed using datetime module
@@ -22,6 +20,7 @@ for routeNum in route_numbers:
                 stop_name = stop["Name"]
                 latitude, longitude = stop["Latitude"], stop["Longtitude"]
 
-                bus_stops[routeNum][stop_name] = {"Latitude": latitude, "Longitude": longitude}
+                bus_stops[routeNum][stop_name] = ((int(latitude) / 100000) - 5.2135, (int(longitude) / 100000) + 10.905)
 
-print(bus_stops)
+for ele in bus_stops:
+    print(ele, bus_stops[ele])
