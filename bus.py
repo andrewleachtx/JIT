@@ -1,5 +1,5 @@
 import requests
-from node import Node
+from busnodes import Node
 from datetime import datetime
 
 route_numbers = []
@@ -26,13 +26,14 @@ for routeNum in route_numbers:
 
                 bus_stops[routeNum].append(Node(stop_name, latitude, longitude))
 
-for route in bus_stops:
-    print(f"{route}:")
+def printDistances():
+    for route in bus_stops:
+        print(f"{route}:")
 
-    for i in range(len(bus_stops[route]) - 1):
-        currStop, nextStop = bus_stops[route][i], bus_stops[route][i + 1]
+        for i in range(len(bus_stops[route]) - 1):
+            currStop, nextStop = bus_stops[route][i], bus_stops[route][i + 1]
 
-        dist = currStop.distance(nextStop)
-        print(f"{currStop.stop_name} to {nextStop.stop_name} is {dist}")
+            dist = currStop.distance(nextStop)
+            print(f"{currStop.stop_name} to {nextStop.stop_name} is {dist}")
 
-    print('\n')
+        print('\n')
