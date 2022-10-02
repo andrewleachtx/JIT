@@ -10,7 +10,7 @@ from buildings import sampleBuildings
 from time import localtime
 from tkinter import filedialog as fd
 from coolcal import myCal, icsConvert
-# import bus
+import bus
 
 '''google maps stuff'''
 import googlemaps
@@ -49,6 +49,8 @@ def bruh(): #this opens a file dialogue
 
 root = Tk()
 root.geometry( "500x500" )
+weather = Label(text=rain())
+weather.pack()
 
 w = Text(root, height=1, width = 500)
 w.pack()
