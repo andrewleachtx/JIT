@@ -1,10 +1,10 @@
+import random
 import requests
 from busnodes import Node
 from datetime import datetime
 import googlemaps
-from random import randint
 
-
+# To be called in main.py with a parameter of latitude and longitude of a destination.
 def work(end_lat, end_long):
     api_key_file = open("./api_keys/gmaps", "r")
     api_key = api_key_file.read().strip()
@@ -49,12 +49,13 @@ def work(end_lat, end_long):
 
             print('\n')
 
-    random_deviation = randint(-1, 1)
-    # Starting Point will vary for simulating testing, user input not complete
+    # As we did not finish implementing a current longitude and latitude code, we will use a random generator
+    random_deviation = random.uniform(-1, 1)
     start_lat, start_long = 29.119 + random_deviation, -98.3402 + random_deviation
     start = Node("Start", start_lat, start_long)
     end   = Node("End", end_lat, end_long)
 
+    # This function takes a route, and the user inputted start.
     def closestToNode(route, startNode):
         nodeCoords = [node.coords for node in bus_stops[route]]
 
@@ -67,16 +68,20 @@ def work(end_lat, end_long):
 
         minIndex = times.index(min(times))
 
+        # Returns tuple with the bus stop's name, and the time it takes.
         return (bus_stops[route][minIndex], times[minIndex])
 
     potential_routes, route_times = {}, []
 
+    # For every route, add a potential route that has the closest stop to the user's current location, and the bus stop on that route that is closest to the ending position.
     for route in bus_stops:
         potential_routes[route] = (closestToNode(route, start), closestToNode(route, end))
 
+    # For every route, find the total walking time, which includes the start to bus stop, and last bus stop to destination.
     for route in potential_routes:
         route_times.append((route, potential_routes[route][0][1] + potential_routes[route][0][1]))
 
+    # Find the route that has the smallest walk time.
     fastest_index = 1
     for time in route_times:
         if time[1] < route_times[fastest_index][1]:
