@@ -1,4 +1,4 @@
-from GraphStuff.node import node
+from busnodes import Node as node
 import gmaps
  
 class graph:
