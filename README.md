@@ -10,8 +10,9 @@ The goal of J.I.T. is to take all of the unexpected things that will ruin your d
 J.I.T. takes input from a user, such as a wake-up alarm and calendar, and will pull a mass of data accessible online about your location, the weather, traffic, etc... and after that point. J.I.T. will give you all of the information you need to decide.
 
 ## Features
-- Get the most efficient bus route
-- Display weather information
+- Take user input of a current location, and a desired location. From this, find of all routes the one with the least walking time required in order to get to a bus stop and get off the next bus stop closest to the destination.
+- Display weather information and ask user decisions about their path.
+- Intake calendar data through ICS
 
 ## Dependencies
 - [Python] with VSCode environment, chosen for straightforward implementation and reliance on libraries.
@@ -21,13 +22,7 @@ J.I.T. takes input from a user, such as a wake-up alarm and calendar, and will p
 
 ## Installation
 
-## Current Files
-| File | HYPERLINK |
-| ---- | --------- |
-| readme | [github][...] | 
-| install | [github][...] |
-| template | [github][...] |
-| template | [github][...] |
+No installation is currently available.
 
 [//]: # (reference links)
 
