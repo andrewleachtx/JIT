@@ -46,7 +46,8 @@ def printDistances():
 
         print('\n')
 
-start, end = Node("Home", 30.4, -96.1), Node("Jit Island", 31.0, -96.3)
+start = Node("Start", start_lat, start_long)
+end   = Node("End", end_lat, end_long)
 
 def closestToNode(route, startNode):
     nodeCoords = [node.coords for node in bus_stops[route]]
