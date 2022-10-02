@@ -41,7 +41,7 @@ def rain():
         rain = True
     
     if rain == True:
-        return "It will rain today"
+        return "It will rain today. Make sure to grab an umbrella, and perhaps take the bus?"
 
     else: 
-        return "It will not rain today"
+        return "It will not rain today, no need for an umbrella!"

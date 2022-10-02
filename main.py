@@ -25,20 +25,18 @@ def getCurrentLocation(): # Get current location, is not called currently
     pass
 
 root    = Tk()
-root.geometry("500x500")
-weather = Label(text=rain())
+root.geometry("1200x500")
+weather = Label(text=rain(), font="Helvetica, 20")
 weather.pack()
 
 OPTIONS  = sampleBuildings
 OPTIONS2 = names
 
-root = Tk()
-root.geometry("500x500")
-
 variable = StringVar(root)
 variable.set("Desired Destination") # Default Value
 
 w = OptionMenu(root, variable, *OPTIONS2)
+w.config(font="Helvetica, 16")
 w.pack()
 
 def show():
@@ -46,13 +44,15 @@ def show():
         if variable.get() in names:
             index = names.index(variable.get())
 
-    end_lat, end_long = OPTIONS[index][1], OPTIONS[index][2]
+        end_lat, end_long = OPTIONS[index][1], OPTIONS[index][2]
 
-    weather = Label(text=bus.work(end_lat, end_long))
-    weather.pack()
+        weather = Label(text='\n' + bus.work(end_lat, end_long))
+        weather.pack()
+    else:
+        pass
 
 
-button = Button(root, text="", command=show)
+button = Button(root, font="Helvetica, 12", text="Find Route", command=show)
 button.pack()
 
 root.mainloop()

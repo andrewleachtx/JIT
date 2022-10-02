@@ -89,5 +89,5 @@ def work(end_lat, end_long):
 
     fastest_route = route_times[fastest_index][0]
 
-    return (f"The fastest route is {fastest_route}. The closest bus stop (walking time) to you right now is {potential_routes[fastest_route][0][0].printNode()}."
-          f" You should get off on {potential_routes[fastest_route][1][0].printNode()}, it is the closest stop (walking time) to your destination")
+    return (f"The fastest route is TAMU bus route {fastest_route}. The closest bus stop (walking time) to you right now is {potential_routes[fastest_route][0][0].printNode()}."
+          f" You should get off on {potential_routes[fastest_route][1][0].printNode()}, it is the closest stop (walking time) to your destination.")
